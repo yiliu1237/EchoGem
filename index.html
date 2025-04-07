@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Crystal Shader</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles.css" />
+    <style>
+      body { margin: 0; overflow: hidden; } /*why???*/
+      canvas { display: block; }
+    </style>
+  </head>
+  <body>
+    <div id="capture">
+      <!-- Your WebGL canvas will be rendered here -->
+    </div>
+
+    <div id="screenshotFrame">
+      <div id="captureTarget"></div>
+    </div>
+  
+    <!-- Where screenshot result appears -->
+    <div id="container"></div>
+  
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.155/build/three.min.js"></script>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
