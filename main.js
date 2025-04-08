@@ -18,7 +18,8 @@ const uniforms = {
   iResolution: { value: new THREE.Vector3(window.innerWidth, window.innerHeight, 1) },
   iMouse: { value: new THREE.Vector4(0, 0, 0, 0) },
   uClick: { value: new THREE.Vector4(0, 0, 0, 0) },
-  currentCameraPos: { value: new THREE.Vector3(0, 0, -8.0) }
+  currentCameraPos: { value: new THREE.Vector3(0, 0, -8.0) },
+  baseColor: { value: new THREE.Vector3(0, 0, 0) }
 };
 
 setupMouseControl(uniforms, renderer, () => rotationClock); 
@@ -36,6 +37,17 @@ const mesh = new THREE.Mesh(geometry, material);
 scene.add(mesh);
 
 
+function generateColor(time) {
+  let period = 20000.0;
+  let phi = (time / period) * 2 * Math.PI;
+
+  let r = 0.3 + 0.3 * Math.sin(phi);
+  let g = 0.2 + 0.2 * Math.sin(phi + 2.0 );
+  let b = 0.25 + 0.25 * Math.sin(phi + 4.0 );
+
+  return [r, g, b]; // returns an array like [0.3, 0.2, 0.25]
+}
+
 let rotationClock = 0;
 let lastFrameTime = 0;
 
@@ -45,6 +57,9 @@ function animate(time) {
   // convert `time` from milliseconds to seconds
   const delta = (time - lastFrameTime) * 0.001;
   lastFrameTime = time;
+
+  let baseColor = generateColor(time);
+  uniforms.baseColor.value = baseColor;
 
   const autoRotate = checkAutoRotateResume();
 

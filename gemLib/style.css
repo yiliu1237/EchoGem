@@ -1,0 +1,143 @@
+body {
+    background-color: transparent; /* remove the solid color if want to see parent's site behind */
+    overflow: hidden; 
+}
+
+.container{
+    position: absolute;
+    z-index: 2;
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+    width:1000px;
+    height:600px;
+    padding:50px;
+    background-color: #ffffff;
+    box-shadow: 0 30px 50px #212020;
+}
+
+#slide{
+    width:max-content;
+    margin-top:50px;
+}
+
+
+.item{
+    width:200px;
+    height:150px;
+    background-position: 50% 50%;
+    display: inline-block;
+    transition: 0.5s;
+    background-size: cover;
+    position: absolute;
+    top:85%;
+    transform: translate(0,-50%);
+    border-radius: 20px;
+    box-shadow:  0 30px 50px #505050;
+    z-index: 3;
+}
+
+.item:nth-child(1),
+.item:nth-child(2){
+    left:0;
+    top:0;
+    transform: translate(0,0);
+    border-radius: 0;
+    width:100%;
+    height:100%;
+    box-shadow: none;
+}
+.item:nth-child(3){
+    left:50%;
+}
+.item:nth-child(4){
+    left:calc(50% + 220px);
+}
+.item:nth-child(5){
+    left:calc(50% + 440px);
+}
+.item:nth-child(n+6){
+    left:calc(50% + 660px);
+    opacity: 0;
+}
+
+.item .content{
+    position: absolute;
+    font-size: 25px;
+    top:50%;
+    left:5%;
+    width:300px;
+    text-align: left;
+    padding:0;
+    color:#ffffff;
+    background: linear-gradient(to right, rgba(52, 51, 51, 0.249), rgba(255, 255, 255, 0.263));
+    padding: 200px 25px;
+    transform: translate(0,-50%);
+    display: none;
+    font-family: system-ui;
+    z-index: 3;
+}
+
+
+.des, .gemDescription {
+    font-size: 25px;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 30px;
+    font-weight: bold;
+    top:50%;
+    left:100px;
+    width:300px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+    padding: 1em;
+    border-radius: 12px;
+    backdrop-filter: blur(3px);
+    z-index: 3;
+  }
+
+.item:nth-child(2) .content{
+    display: block;
+    z-index: 11111;
+}
+.item .name{
+    font-size: 50px;
+    font-family: 'Playfair Display', serif;
+    font-weight: bold;
+    opacity: 0;
+    animation:showcontent 1s ease-in-out 1 forwards
+}
+.item .des{
+    margin:20px 0;
+    opacity: 0;
+    animation:showcontent 1s ease-in-out 0.3s 1 forwards
+}
+
+
+@keyframes showcontent{
+    from{
+        opacity: 0;
+        transform: translate(0,100px);
+        filter:blur(33px);
+    }to{
+        opacity: 1;
+        transform: translate(0,0);
+        filter:blur(0);
+    }
+}
+
+/* .cover {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background-color: rgba(22, 22, 22, 0.43); 
+    border-radius: 16px;
+  
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    
+    z-index: 1;
+    pointer-events: none; 
+  } */

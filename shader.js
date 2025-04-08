@@ -12,6 +12,7 @@ export default `
     uniform vec3 zoomTarget;
     uniform float zoomProgress;
     uniform vec3 currentCameraPos;
+    uniform vec3 baseColor;
 
     vec2 uv;
     vec3 cp,cn,cr,ro,rd,ss,oc,cc,gl,vb;
@@ -150,7 +151,7 @@ export default `
     // Output:
     //   - cc: calculated color at the hit point
     void px(){
-      cc = vec3(0.35, 0.25, 0.45) + length(pow(abs(rd + vec3(0, 0.5, 0)), vec3(3))) * 0.3 + gl;
+      cc = baseColor + length(pow(abs(rd + vec3(0, 0.5, 0)), vec3(3))) * 0.3 + gl;
       vec3 l = vec3(0.9, 0.7, 0.5);  // Light direction
 
       if (cd > 128.) { oa = 1.; return; } //If we didn't hit anything (traveled too far), skip the lighting and fully fade the current ray by setting opacity = 1.
