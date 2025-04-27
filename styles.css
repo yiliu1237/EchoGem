@@ -39,10 +39,10 @@ canvas { display: block; }
 #gemOverlay {
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100vw;
+  left: 5%;
+  width: 90vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(0, 0, 0, 0.5);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;

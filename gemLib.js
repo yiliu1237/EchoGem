@@ -12,8 +12,12 @@ function toggleGemOverlay() {
   gemVisible = !gemVisible;
   if (gemVisible) {
     overlay.classList.add("show");
+
+    window.postMessage("PAUSE_ANIMATION", "*");
   } else {
     overlay.classList.remove("show");
+
+    window.postMessage("RESUME_ANIMATION", "*");
   }
 }
 

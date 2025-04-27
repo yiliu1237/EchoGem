@@ -5,6 +5,9 @@ const scene = new THREE.Scene();
 const camera = new THREE.Camera();
 camera.position.z = 1;
 
+
+let animating = true;
+
 const renderer = new THREE.WebGLRenderer({
   antialias: true,
   preserveDrawingBuffer: true  // html2canvas needs to "read" the pixel buffer when capturing
@@ -54,6 +57,9 @@ let lastFrameTime = 0;
 const MOVE_SPEED = 2.5; // units per second
 
 function animate(time) {
+  if (!animating) return;
+
+  console.log("animating"); ///for debugging
   // convert `time` from milliseconds to seconds
   const delta = (time - lastFrameTime) * 0.001;
   lastFrameTime = time;
@@ -92,8 +98,22 @@ function animate(time) {
   }
 
   renderer.render(scene, camera);
-  requestAnimationFrame(animate);
+  requestAnimationFrame(animate); //kind of controlled recursion
 }
+
+
+
+window.addEventListener("message", (event) => {
+  if (event.data === "PAUSE_ANIMATION") {
+    animating = false;
+  } else if (event.data === "RESUME_ANIMATION") {
+    animating = true;
+    lastFrameTime = performance.now(); 
+    requestAnimationFrame(animate);    
+  }
+});
+
+
 
 animate();
 

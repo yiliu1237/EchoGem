@@ -1,143 +1,134 @@
+/* --------------------- Global --------------------- */
 body {
-    background-color: transparent; /* remove the solid color if want to see parent's site behind */
+    background-color: transparent;
     overflow: hidden; 
 }
 
-.container{
+.container {
     position: absolute;
     z-index: 2;
-    left:50%;
-    top:50%;
-    transform: translate(-50%,-50%);
-    width:1000px;
-    height:600px;
-    padding:50px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 100vh;
+    padding: 5vh 5vw;
     background-color: #ffffff;
-    box-shadow: 0 30px 50px #212020;
-}
-
-#slide{
-    width:max-content;
-    margin-top:50px;
+    box-shadow: 0 3vh 5vh #212020;
+    overflow: hidden;
+    border-radius: 2vw;
 }
 
 
-.item{
-    width:200px;
-    height:150px;
+
+
+/* --------------------- Slide Section --------------------- */
+#slide {
+    width: max-content;
+    margin-top: 10vh;
+    margin-bottom: 5vh;
+}
+
+
+/* --------------------- Item (Thumbnail Cards) --------------------- */
+.item {
+    position: absolute;
+    width: 15vw;   
+    height: 11vw;  
     background-position: 50% 50%;
+    background-size: cover;
     display: inline-block;
     transition: 0.5s;
-    background-size: cover;
-    position: absolute;
-    top:85%;
-    transform: translate(0,-50%);
-    border-radius: 20px;
-    box-shadow:  0 30px 50px #505050;
+    border-radius: 2vw;
+    box-shadow: 0 3vh 5vh #505050;
+    top: 85%;
+    transform: translate(0, -50%);
     z-index: 3;
 }
 
+/* Main (Active) Items */
 .item:nth-child(1),
-.item:nth-child(2){
-    left:0;
-    top:0;
-    transform: translate(0,0);
+.item:nth-child(2) {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
     border-radius: 0;
-    width:100%;
-    height:100%;
     box-shadow: none;
+    transform: translate(0, 0);
 }
-.item:nth-child(3){
-    left:50%;
-}
-.item:nth-child(4){
-    left:calc(50% + 220px);
-}
-.item:nth-child(5){
-    left:calc(50% + 440px);
-}
-.item:nth-child(n+6){
-    left:calc(50% + 660px);
+
+/* Next Items */
+.item:nth-child(3) { left: 50%; }
+.item:nth-child(4) { left: calc(50% + 17vw); }
+.item:nth-child(5) { left: calc(50% + 34vw); }
+.item:nth-child(n+6) {
+    left: calc(50% + 51vw);
     opacity: 0;
 }
 
-.item .content{
+/* --------------------- Item Content (Glass Panel) --------------------- */
+.item .content {
     position: absolute;
-    font-size: 25px;
-    top:50%;
-    left:5%;
-    width:300px;
+    top: 5vh;
+    left: 1.5vw;
+    width: 30vw;
+    height: calc(100% - 8vh);
+    padding: 5vh 2vw 5vh 7vw; /* top right bottom left */
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(6px);
+    border-top-left-radius: 2vw;
+    border-bottom-left-radius: 2vw;
+    color: #ffffff;
     text-align: left;
-    padding:0;
-    color:#ffffff;
-    background: linear-gradient(to right, rgba(52, 51, 51, 0.249), rgba(255, 255, 255, 0.263));
-    padding: 200px 25px;
-    transform: translate(0,-50%);
-    display: none;
     font-family: system-ui;
+    font-size: 2.2vw;
+    display: none;
+    transform: none;
     z-index: 3;
 }
 
+/* Show content for the active slide */
+.item:nth-child(2) .content {
+    display: block;
+    z-index: 11;
+}
 
-.des, .gemDescription {
-    font-size: 25px;
+/* --------------------- Text inside Content --------------------- */
+.item .name {
+    font-family: 'Playfair Display', serif;
+    font-weight: bold;
+    left: vw;
+    font-size: 5vw;
+    opacity: 0;
+    animation: showcontent 1s ease-in-out forwards;
+}
+
+.item .des, 
+.gemDescription {
     font-family: 'Playfair Display', serif;
     font-style: italic;
-    font-size: 30px;
     font-weight: bold;
-    top:50%;
-    left:100px;
-    width:300px;
+    font-size: 3vw; 
     line-height: 1.7;
     color: rgba(255, 255, 255, 0.9);
-    text-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
-    padding: 1em;
-    border-radius: 12px;
+    text-shadow: 0 0 0.6vw rgba(0, 0, 0, 0.4); 
+    padding: 2vh 2vw;
+    border-radius: 1.5vw;
     backdrop-filter: blur(3px);
     z-index: 3;
-  }
-
-.item:nth-child(2) .content{
-    display: block;
-    z-index: 11111;
-}
-.item .name{
-    font-size: 50px;
-    font-family: 'Playfair Display', serif;
-    font-weight: bold;
-    opacity: 0;
-    animation:showcontent 1s ease-in-out 1 forwards
-}
-.item .des{
-    margin:20px 0;
-    opacity: 0;
-    animation:showcontent 1s ease-in-out 0.3s 1 forwards
 }
 
-
-@keyframes showcontent{
-    from{
+/* --------------------- Animation --------------------- */
+@keyframes showcontent {
+    from {
         opacity: 0;
-        transform: translate(0,100px);
-        filter:blur(33px);
-    }to{
+        transform: translate(0, 10vh);
+        filter: blur(3vw);
+    }
+    to {
         opacity: 1;
-        transform: translate(0,0);
-        filter:blur(0);
+        transform: translate(0, 0);
+        filter: blur(0);
     }
 }
-
-/* .cover {
-    position: absolute;
-    width: 400px;
-    height: 400px;
-    background-color: rgba(22, 22, 22, 0.43); 
-    border-radius: 16px;
-  
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); 
-    
-    z-index: 1;
-    pointer-events: none; 
-  } */
