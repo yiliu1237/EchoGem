@@ -1,3 +1,5 @@
+let  test = 1;
+
 document.addEventListener('keydown', (e) => {
     if (['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
   
@@ -11,6 +13,8 @@ document.addEventListener('keydown', (e) => {
         console.warn("No .item found");
         return;
       }
+
+      
   
       const descriptionDiv = currentItem.querySelector('.gemDescription');
   
@@ -24,6 +28,8 @@ document.addEventListener('keydown', (e) => {
       textarea.value = descriptionDiv.textContent.trim();
       textarea.style.width = '100%';
       textarea.style.height = '6em';
+
+      console.log(textarea);
   
       descriptionDiv.replaceWith(textarea);
       textarea.focus();
