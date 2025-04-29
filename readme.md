@@ -20,9 +20,7 @@ Move through a dynamic 3D space, reflect on your thoughts, and capture them as b
 ---
 
 ## Preview
-
-
-
+[Preview](https://github.com/yiliu1237/EchoGem/blob/main/demo/preview.gif)
 
 ---
 
