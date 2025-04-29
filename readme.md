@@ -5,28 +5,25 @@ Move through a dynamic 3D space, reflect on your thoughts, and capture them as b
 
 ---
 
+## Preview
+
+![Preview](https://raw.githubusercontent.com/yiliu1237/EchoGem/main/demo/preview.gif)
+
+---
+
+## How to Play
+
+- **Move**: `W A S D`
+- **Zoom**: `Z` (Zoom in) / `X` (Zoom out)
+- **Mouse**: Hold and drag to change the camera direction.
+- **Enter Gem Library**: Press `Space`
+- **Slide Crystals**: Use `Left` and `Right` arrow keys
+
+---
+
 ## Features
 
-- **Explore a 3D Crystal World**  
-  Navigate freely using `W A S D` keys, zoom with `Z` and `X`, and drag the mouse to control the camera.
-
-- **Gem Library Overlay**  
-  Press `Space` to access your personal Gem Library. Use `←` and `→` keys to browse through captured crystals.
-
-- **Smooth and Responsive Design**  
-  Built using **Three.js** and **html2canvas**, ensuring a lightweight and visually engaging experience.
-
-
----
-
-## Preview
-[Preview](https://github.com/yiliu1237/EchoGem/blob/main/demo/preview.gif)
-
----
-
-## Technologies Used
-
-- [Three.js](https://threejs.org/) (for 3D rendering)
-- [html2canvas](https://html2canvas.hertzen.com/) (for screenshot capturing)
-- Vanilla HTML, CSS, and JavaScript
-
+- Procedural crystal generation
+- Dynamic WebGL shader animation
+- Smooth UI overlay transitions
+- Lightweight and responsive
